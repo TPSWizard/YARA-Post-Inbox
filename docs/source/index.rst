@@ -107,8 +107,7 @@ Sample Rule 1
     {
         meta:
             description = "This is just an example"
-            threat_level = 3
-            in_the_wild = true
+   
         strings:
             $a = {6A 40 68 00 30 00 00 6A 14 8D 91}
             $b = {8D 4D B0 2B C1 83 C0 27 99 6A 4E 59 F7 F9}
@@ -121,23 +120,12 @@ Sample Rule 1
 Sample Rule 2
 
 .. code-block:: yara
-
-rule ExampleRule
+rule CountExample
 {
-strings:
-$my_text_string = "text here"
-$my_hex_string = { E2 34 A1 C8 23 FB }
-condition:
-$my_text_string or $my_hex_string
+    strings:
+        $a = "dummy1"
+        $b = "dummy2"
+
+    condition:
+        #a == 6 and #b > 10
 }
-
-
-Sample Rule 3
-
-.. code-block:: yara
-
-
-
-Sample Rule 4
-
-.. code-block:: yara
