@@ -2,37 +2,17 @@ YARA Rules & Tips! **This page is under construction**
 ===================================
 
 What are "YARA" rules?
+
 YARA rules are text files with a very basic, yet powerful, syntax. These rules contain three parts:
 
 Each rule in YARA starts with the keyword rule followed by a rule identifier. Identifiers must follow the same lexical conventions of the C programming language, they can contain any alphanumeric character and the underscore character, but the first character cannot be a digit. Rule identifiers are case sensitive and cannot exceed 128 characters. The following keywords are reserved and cannot be used as an identifier:
 
 Meta: Background information regarding rule - Not processed
 Strings: Pieces of information being searched for in our target email.
-Conditions: Defines the condition for matching. It can be just matching one or several strings. (Are my strings "true?)
-
-Quick Sample Rule Template:
-
-.. code-block:: yara
-
-    rule rulename_sample
-    {
-        meta:
-            description = "This is just an example"
-            version="0.1"
-            date="2021/05/12"
-   
-        strings:
-            $my_hex_string = {8D 4D B0 2B C1 83 C0 27 99 6A 4E 59 F7 F9}
-            $my_text_string = "text here"
-            
-        condition:
-            $my_text_string or $my_hex_string
-            /* This is a comment :) */
-    }
-    
+Conditions: Defines the condition for matching. It can be just matching one or several strings. (Are my strings "true?)   
     
 
-Some Sample Rules:
+Writing YARA Rules:
 ================================
 
 Each rule in YARA starts with the keyword ``rule`` followed by a rule
@@ -102,6 +82,29 @@ keywords are reserved and cannot be used as an identifier:
      -
      -
      
+Quick Rule Template and Examples/Uses:
+================================
+
+.. code-block:: yara
+
+    rule rulename_sample
+    {
+        meta:
+            description = "This is just an example"
+            version="0.1"
+            date="2021/05/12"
+   
+        strings:
+            $my_hex_string = {8D 4D B0 2B C1 83 C0 27 99 6A 4E 59 F7 F9}
+            $my_text_string = "text here"
+            
+        condition:
+            $my_text_string or $my_hex_string
+            // This is a comment :)
+    }
+
+
+     
 Sample Rule 1 | Generic Email Spamming
 ================================
 
@@ -155,22 +158,22 @@ Sample Rule 2 - Detecting filesize of attachments (Target attachment)
         filesize > 200KB
     }
     
-Sample Rule 3
+Sample Rule 3 - At least 2 strings present in email
 ================================
 
 .. code-block:: yara
 
    rule CountExample
    {
-    meta:
-        description = "Generic rule to identify phishing emails"
     strings:
-        $a = "dummy1"
-        $b = "dummy2"
-        $c = "dummy3"
-
+        $thing1 = "password"
+        $thing2 = "username"
+        
+        $place1 = "Baltimore"
+        $place2 = "Texas"
     condition:
-        2 of ($a,$b,$c)
+        2 of ($thing1,$thing2,$place1,$place2)
+        
 } 
     
     
