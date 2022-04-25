@@ -102,7 +102,15 @@ keywords are reserved and cannot be used as an identifier:
      -
      
      
+     
+     
+     
+     
+     
+     
+     
 Sample Rule 1 
+================================
 
 .. code-block:: yara
 
@@ -118,9 +126,19 @@ Sample Rule 1
         condition:
             $a
     }
+
+
+
+
+
+
+
+
+
 
 
 Sample Rule 2
+================================
 
 .. code-block:: yara
 
@@ -140,94 +158,3 @@ Sample Rule 2
     
     
     
-    
-.. code-block:: yara
-
-
-    rule rule_name
-    {
-        meta:
-            description = "This is just an example"
-   
-        strings:
-            $a = "dummy1"
-           
-        condition:
-            $a
-    }
-    
-    
-    
-    
-.. code-block:: yara
-
-
-    rule rule_name
-    {
-        meta:
-            description = "This is just an example"
-   
-        strings:
-            $a = "dummy1"
-           
-        condition:
-            $a
-    }
-    
-    
-    
-    
-    
-.. code-block:: yara
-
-
-    rule rule_name
-    {
-        meta:
-            description = "This is just an example"
-   
-        strings:
-            $a = "dummy1"
-           
-        condition:
-            $a
-    }
-
-
-
-
-Sample Rule 3
-
-.. code-block:: yara
-
-   rule CountExample
-   {
-            meta:
-            description = "This is just an example"
-            
-            strings:
-            $a = "dummy1"
-            $b = "dummy2"
-            
-            condition:
-            #a == 6 and #b > 10
-    }
-    
-    
-    
-Sample Rule 4
-
-.. code-block:: yara
-
-   rule CountExample
-   {
-            meta:
-            description = "This is just an example"
-            
-            strings:
-            $a = "dummy1"
-            $b = "dummy2"
-            
-            condition:
-            #a == 6 and #b > 10
-    }
