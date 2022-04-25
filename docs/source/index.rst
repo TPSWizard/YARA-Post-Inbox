@@ -144,22 +144,15 @@ Sample Rule 1 | Generic Email Spamming
     }  
 
 
-Sample Rule 2
+Sample Rule 2 - Detecting filesize of attachments (Target attachment)
 ================================
 
 .. code-block:: yara
 
-   rule CountExample
-   {
-            meta:
-            description = "This is just an example"
-            
-            strings:
-            $a = "dummy1"
-            $b = "dummy2"
-            
-            condition:
-            #a == 6 and #b > 10
+    rule AttachFileSize
+    {
+        condition:
+        filesize > 200KB
     }
     
 Sample Rule 3
@@ -169,16 +162,16 @@ Sample Rule 3
 
    rule CountExample
    {
-            meta:
-            description = "This is just an example"
-            
-            strings:
-            $a = "dummy1"
-            $b = "dummy2"
-            
-            condition:
-            #a == 6 and #b > 10
-    }  
+    meta:
+        description = "Generic rule to identify phishing emails"
+    strings:
+        $a = "dummy1"
+        $b = "dummy2"
+        $c = "dummy3"
+
+    condition:
+        2 of ($a,$b,$c)
+} 
     
     
     
