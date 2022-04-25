@@ -121,13 +121,14 @@ Sample Rule 2
 
 .. code-block:: yara
 
-
-rule CountExample
-{
-    strings:
-        $a = "dummy1"
-        $b = "dummy2"
-
-    condition:
-        #a == 6 and #b > 10
-}
+   rule CountExample
+   {
+          meta:
+            description = "This is just an example"
+            
+            strings:
+            $a = "dummy1"
+            $b = "dummy2"
+            condition:
+            #a == 6 and #b > 10
+    }
