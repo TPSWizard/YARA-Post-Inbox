@@ -11,7 +11,7 @@ Strings: Pieces of information being searched for in our target email.
 Conditions: Defines the condition for matching. It can be just matching one or several strings. (Are my strings "true?)
 
 Quick Rule Template:
-
+.. code-block:: yara
 rule insertrulename
 {
    meta:
