@@ -126,10 +126,10 @@ Sample Rule 2
    {
           meta:
             description = "This is just an example"
+            
             strings:
-$a = "dummy1"
-        $b = "dummy2"
-
-    condition:
-        #a == 6 and #b > 10
+            $a = "dummy1"
+            $b = "dummy2"
+            condition:
+            #a == 6 and #b > 10
 }
