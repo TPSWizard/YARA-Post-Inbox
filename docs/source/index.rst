@@ -25,26 +25,77 @@ condition:
 }
 
 
-===================================
-.. note::
-
-   This project is under active development.
-
-Contents
---------
-
-.. toctree::
-
-   usage
-   api
-
 
 Some Sample Rules:
 ================================
 
-YARA is a tool aimed at (but not limited to) helping malware researchers to
-identify and classify malware samples. With YARA you can create descriptions of malware families (or whatever you want to describe) based on textual or binary patterns. Each description, a.k.a. rule, consists of a set of strings and a
-boolean expression which determine its logic. Let's see an example:
+Each rule in YARA starts with the keyword ``rule`` followed by a rule
+identifier. Identifiers must follow the same lexical conventions of the C
+programming language, they can contain any alphanumeric character and the
+underscore character, but the first character cannot be a digit. Rule
+identifiers are case sensitive and cannot exceed 128 characters. The following
+keywords are reserved and cannot be used as an identifier:
+
+
+.. list-table:: YARA keywords
+   :widths: 10 10 10 10 10 10 10 10
+
+   * - all
+     - and
+     - any
+     - ascii
+     - at
+     - base64
+     - base64wide
+     - condition
+   * - contains
+     - endswith
+     - entrypoint
+     - false
+     - filesize
+     - for
+     - fullword
+     - global
+   * - import
+     - icontains
+     - iendswith
+     - iequals
+     - in
+     - include
+     - int16
+     - int16be
+   * - int32
+     - int32be
+     - int8
+     - int8be
+     - istartswith
+     - matches
+     - meta
+     - nocase
+   * - none
+     - not
+     - of
+     - or
+     - private
+     - rule
+     - startswith
+     - strings
+   * - them
+     - true
+     - uint16
+     - uint16be
+     - uint32
+     - uint32be
+     - uint8
+     - uint8be
+   * - wide
+     - xor
+     - defined
+     -
+     -
+     -
+     -
+     -
 
 .. code-block:: yara
 
