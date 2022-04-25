@@ -12,34 +12,22 @@ Conditions: Defines the condition for matching. It can be just matching one or s
 
 Quick Rule Template:
 .. code-block:: yara
-rule insertrulename
-{
-   meta:
-         author="name"
-         version="0.1"
-         date="2021/05/12"
-         reference="any useful reference"
-strings:
-
-condition:
-}
-
-.. code-block:: yara
 
 
-    rule silent_banker
+    rule rulename_sample
     {
         meta:
             description = "This is just an example"
             version="0.1"
             date="2021/05/12"
-            /* This is a comment */
    
         strings:
-            $my_hex_string = {8D 4D B0 2B C1 83 C0 27 99 6A 4E 59 F7 F9} /* comment */
+            $my_hex_string = {8D 4D B0 2B C1 83 C0 27 99 6A 4E 59 F7 F9}
             $my_text_string = "text here"
+            
         condition:
             $my_text_string or $my_hex_string
+             /* This is a comment :) */
     }
 
 Some Sample Rules:
@@ -128,6 +116,7 @@ Sample Rule 1
             $a = {6A 40 68 00 30 00 00 6A 14 8D 91}
             $b = {8D 4D B0 2B C1 83 C0 27 99 6A 4E 59 F7 F9}
             $c = "UVODFRYSIHLNWPEJXQZAKCBGMT"
+            
         condition:
             $a or $b or $c
     }
@@ -145,6 +134,43 @@ Sample Rule 2
             strings:
             $a = "dummy1"
             $b = "dummy2"
+            
+            condition:
+            #a == 6 and #b > 10
+    }
+    
+    Sample Rule 3
+
+.. code-block:: yara
+
+   rule CountExample
+   {
+            meta:
+            description = "This is just an example"
+            
+            strings:
+            $a = "dummy1"
+            $b = "dummy2"
+            
+            condition:
+            #a == 6 and #b > 10
+    }
+    
+    
+    
+    Sample Rule 4
+
+.. code-block:: yara
+
+   rule CountExample
+   {
+            meta:
+            description = "This is just an example"
+            
+            strings:
+            $a = "dummy1"
+            $b = "dummy2"
+            
             condition:
             #a == 6 and #b > 10
     }
