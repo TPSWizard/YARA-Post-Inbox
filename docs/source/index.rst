@@ -120,10 +120,11 @@ Sample Rule 1
 Sample Rule 2
 
 .. code-block:: yara
+
 rule CountExample
 {
-    strings:
-        $a = "dummy1"
+strings:
+$a = "dummy1"
         $b = "dummy2"
 
     condition:
