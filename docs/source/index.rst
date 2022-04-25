@@ -10,7 +10,7 @@ Meta: Background information regarding rule - Not processed
 Strings: Pieces of information being searched for in our target email.
 Conditions: Defines the condition for matching. It can be just matching one or several strings. (Are my strings "true?)
 
-Quick Rule Template:
+Quick Sample Rule Template:
 
 .. code-block:: yara
 
@@ -29,6 +29,8 @@ Quick Rule Template:
             $my_text_string or $my_hex_string
             /* This is a comment :) */
     }
+    
+    
 
 Some Sample Rules:
 ================================
@@ -40,8 +42,7 @@ underscore character, but the first character cannot be a digit. Rule
 identifiers are case sensitive and cannot exceed 128 characters. The following
 keywords are reserved and cannot be used as an identifier:
 
-
-.. list-table:: YARA keywords
+.. list-table::
    :widths: 10 10 10 10 10 10 10 10
 
    * - all
@@ -101,30 +102,21 @@ keywords are reserved and cannot be used as an identifier:
      -
      -
      
-     
-
-Working Import Modules
-================================    
-     
-     
-          
-     
-     
-Sample Rule 1 
+Sample Rule 1 | Generic Email Spamming
 ================================
 
 .. code-block:: yara
+   rule General_Phishing
+  {
+   meta:
+    Description ="Generic rule to identify phishing emails"
 
-rule General_Phishing
-{
-  meta:
-	Description ="Generic rule to identify phishing emails"
-
-  strings:
+   strings:
     $eml_1="From:"
     $eml_2="To:"
     $eml_3="Subject:"
-
+ 
+    /*Ambiguous salutations*/
     $greeting_1="Hello sir/madam" nocase
     $greeting_2="Attention" nocase
     $greeting_3="Dear user" nocase
@@ -144,12 +136,12 @@ rule General_Phishing
     $lie_5="Revoked" nocase
     $lie_6="Unable" nocase
 
-  condition:
+   condition:
     all of ($eml*) and
     any of ($greeting*) and
     any of ($url*) and
     any of ($lie*)
-}
+  }
 
 
 Sample Rule 2
@@ -169,3 +161,28 @@ Sample Rule 2
             condition:
             #a == 6 and #b > 10
     }
+    
+Sample Rule 3
+================================
+
+.. code-block:: yara
+
+   rule CountExample
+   {
+            meta:
+            description = "This is just an example"
+            
+            strings:
+            $a = "dummy1"
+            $b = "dummy2"
+            
+            condition:
+            #a == 6 and #b > 10
+    }  
+    
+    
+    
+    
+Working Import Modules
+================================    
+Section in Progress
