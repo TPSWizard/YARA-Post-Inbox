@@ -171,12 +171,44 @@ Sample Rule 3 - At least 2 strings present in email
         
         $place1 = "Baltimore"
         $place2 = "Texas"
+        
     condition:
         2 of ($thing1,$thing2,$place1,$place2)
         
-} 
+        /*
+        
+        This can also be written the following ways:
+        - 2 of ($thing*,$place*) 
+        - 2 of them
+         
+         */
+    } 
     
-    
+Sample Rule 4 - At least 2 strings present in email
+================================
+
+.. code-block:: yara
+
+   rule CountExample
+   {
+    strings:
+        $thing1 = "password"
+        $thing2 = "username"
+        
+        $place1 = "Baltimore"
+        $place2 = "Texas"
+        
+    condition:
+        2 of ($thing1,$thing2,$place1,$place2)
+        
+        /*
+        
+        This can also be written the following ways:
+        - 2 of ($thing*,$place*) 
+        - 2 of them
+         
+         */
+    }    
     
     
 Working Import Modules
