@@ -11,8 +11,8 @@ Strings: Pieces of information being searched for in our target email.
 Conditions: Defines the condition for matching. It can be just matching one or several strings. (Are my strings "true?)
 
 Quick Rule Template:
-.. code-block:: yara
 
+.. code-block:: yara
 
     rule rulename_sample
     {
@@ -27,7 +27,7 @@ Quick Rule Template:
             
         condition:
             $my_text_string or $my_hex_string
-             /* This is a comment :) */
+            /* This is a comment :) */
     }
 
 Some Sample Rules:
