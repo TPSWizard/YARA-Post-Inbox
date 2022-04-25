@@ -102,11 +102,12 @@ keywords are reserved and cannot be used as an identifier:
      -
      
      
+
+Working Import Modules
+================================    
      
      
-     
-     
-     
+          
      
      
 Sample Rule 1 
@@ -114,27 +115,41 @@ Sample Rule 1
 
 .. code-block:: yara
 
+rule General_Phishing
+{
+  meta:
+	Description ="Generic rule to identify phishing emails"
 
-    rule rule_name
-    {
-        meta:
-            description = "This is just an example"
-   
-        strings:
-            $a = "dummy1"
-           
-        condition:
-            $a
-    }
+  strings:
+    $eml_1="From:"
+    $eml_2="To:"
+    $eml_3="Subject:"
 
+    $greeting_1="Hello sir/madam" nocase
+    $greeting_2="Attention" nocase
+    $greeting_3="Dear user" nocase
+    $greeting_4="Account holder" nocase
 
+    $url_1="Click" nocase
+    $url_2="Confirm" nocase
+    $url_3="Verify" nocase
+    $url_4="Here" nocase
+    $url_5="Now" nocase
+    $url_6="Change password" nocase 
 
+    $lie_1="Unauthorized" nocase
+    $lie_2="Expired" nocase
+    $lie_3="Deleted" nocase
+    $lie_4="Suspended" nocase
+    $lie_5="Revoked" nocase
+    $lie_6="Unable" nocase
 
-
-
-
-
-
+  condition:
+    all of ($eml*) and
+    any of ($greeting*) and
+    any of ($url*) and
+    any of ($lie*)
+}
 
 
 Sample Rule 2
@@ -154,7 +169,3 @@ Sample Rule 2
             condition:
             #a == 6 and #b > 10
     }
-    
-    
-    
-    
