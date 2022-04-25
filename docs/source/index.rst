@@ -103,7 +103,7 @@ Sample Rule 1
 .. code-block:: yara
 
 
-    rule silent_banker : banker
+    rule silent_banker
     {
         meta:
             description = "This is just an example"
