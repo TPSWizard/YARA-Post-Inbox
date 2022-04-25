@@ -1,13 +1,28 @@
-Welcome to Lumache's documentation!
+YARA Rules & Tips!
 ===================================
 
-**Lumache** (/lu'make/) is a Python library for cooks and food lovers
-that creates recipes mixing random ingredients.
-It pulls data from the `Open Food Facts database <https://world.openfoodfacts.org/>`_
-and offers a *simple* and *intuitive* API.
+What are "YARA" rules?
+YARA rules are text files with a very basic, yet powerful, syntax. These rules contain three parts:
 
-Check out the :doc:`usage` section for further information, including
-how to :ref:`installation` the project.
+Meta: Background information regarding rule - Not processed
+Strings: Pieces of information being searched for in our target email.
+Conditions: Defines the condition for matching. It can be just matching one or several strings. (Are my strings "true?)
+
+Quick Rule Template:
+rule samplerule
+{
+   meta:
+         author="Cedric Pernet"
+version="0.1"
+date="2021/05/12"
+reference="any useful reference"
+strings:
+condition:
+}
+
+
+
+
 
 .. note::
 
