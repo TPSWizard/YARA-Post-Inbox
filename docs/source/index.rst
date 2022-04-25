@@ -107,18 +107,16 @@ Sample Rule 1
 .. code-block:: yara
 
 
-    rule silent_banker
+    rule rule_name
     {
         meta:
             description = "This is just an example"
    
         strings:
-            $a = {6A 40 68 00 30 00 00 6A 14 8D 91}
-            $b = {8D 4D B0 2B C1 83 C0 27 99 6A 4E 59 F7 F9}
-            $c = "UVODFRYSIHLNWPEJXQZAKCBGMT"
-            
+            $a = "dummy1"
+           
         condition:
-            $a or $b or $c
+            $a
     }
 
 
@@ -139,6 +137,65 @@ Sample Rule 2
             #a == 6 and #b > 10
     }
     
+    
+    
+    
+    
+.. code-block:: yara
+
+
+    rule rule_name
+    {
+        meta:
+            description = "This is just an example"
+   
+        strings:
+            $a = "dummy1"
+           
+        condition:
+            $a
+    }
+    
+    
+    
+    
+.. code-block:: yara
+
+
+    rule rule_name
+    {
+        meta:
+            description = "This is just an example"
+   
+        strings:
+            $a = "dummy1"
+           
+        condition:
+            $a
+    }
+    
+    
+    
+    
+    
+.. code-block:: yara
+
+
+    rule rule_name
+    {
+        meta:
+            description = "This is just an example"
+   
+        strings:
+            $a = "dummy1"
+           
+        condition:
+            $a
+    }
+
+
+
+
 Sample Rule 3
 
 .. code-block:: yara
