@@ -139,7 +139,7 @@ Sample Rule 2
             #a == 6 and #b > 10
     }
     
-    Sample Rule 3
+Sample Rule 3
 
 .. code-block:: yara
 
@@ -158,7 +158,7 @@ Sample Rule 2
     
     
     
-    Sample Rule 4
+Sample Rule 4
 
 .. code-block:: yara
 
