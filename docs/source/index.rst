@@ -24,7 +24,23 @@ strings:
 condition:
 }
 
+.. code-block:: yara
 
+
+    rule silent_banker
+    {
+        meta:
+            description = "This is just an example"
+            version="0.1"
+            date="2021/05/12"
+            /* This is a comment */
+   
+        strings:
+            $my_hex_string = {8D 4D B0 2B C1 83 C0 27 99 6A 4E 59 F7 F9} /* comment */
+            $my_text_string = "text here"
+        condition:
+            $my_text_string or $my_hex_string
+    }
 
 Some Sample Rules:
 ================================
@@ -123,7 +139,7 @@ Sample Rule 2
 
    rule CountExample
    {
-          meta:
+            meta:
             description = "This is just an example"
             
             strings:
