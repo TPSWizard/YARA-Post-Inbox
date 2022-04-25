@@ -96,8 +96,12 @@ keywords are reserved and cannot be used as an identifier:
      -
      -
      -
+     
+     
+Sample Rule 1 
 
 .. code-block:: yara
+
 
     rule silent_banker : banker
     {
@@ -113,21 +117,27 @@ keywords are reserved and cannot be used as an identifier:
             $a or $b or $c
     }
 
-The above rule is telling YARA that any file containing one of the three strings
-must be reported as silent_banker. This is just a simple example, more complex
-and powerful rules can be created by using wild-cards, case-insensitive strings, regular expressions, special operators and many other features that you'll find explained in this documentation.
 
-Contents:
+Sample Rule 2
 
-.. toctree::
-   :maxdepth: 3
+.. code-block:: yara
 
-   gettingstarted
-   writingrules
-   modules
-   writingmodules
-   commandline
-   yarapython
-   capi
+rule ExampleRule
+{
+strings:
+$my_text_string = "text here"
+$my_hex_string = { E2 34 A1 C8 23 FB }
+condition:
+$my_text_string or $my_hex_string
+}
 
 
+Sample Rule 3
+
+.. code-block:: yara
+
+
+
+Sample Rule 4
+
+.. code-block:: yara
