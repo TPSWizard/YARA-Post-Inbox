@@ -240,7 +240,6 @@ Sample Rule 4 - Potentially risky attachments
         $dll = ".dll" nocase
         $bin = ".bin" nocase
         $sys = ".sys" nocase
-        $com = ".com" nocase
         
     condition:
         any of them
