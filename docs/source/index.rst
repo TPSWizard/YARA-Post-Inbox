@@ -309,7 +309,11 @@ Sample Rule 7 - Targeting specific email headers
             
             $ = /Authentication-Results:.{0,20}spf=pass/ nocase  
             $ = /Authentication-Results-Original:.{0,20}spf=pass/ nocase   
-            /* The header field "Authentication-Results-Original" contains the authentication results of a previous mail server. When a mail server authenticates a message, it writes the result to the header field "Authentication-Results". If this field already exists, its contents can be saved in the field "Authentication-Results-Original".
+            /* The header field "Authentication-Results-Original" contains the authentication results of a previous mail server. 
+            
+            When a mail server authenticates a message, it writes the result to the header field "Authentication-Results". 
+            
+            If this field already exists, its contents can be saved in the field "Authentication-Results-Original".
             */ 
                      
             $ = "header.from=domain.com"  // explanation here & add additional statements
