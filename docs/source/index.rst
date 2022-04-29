@@ -1,7 +1,5 @@
-YARA Rules & Tips! **This page is under construction**
+YARA Rules for PhishER - Under construction
 ===================================
-
-What are "YARA" rules?
 
 YARA rules are text files with a very basic, yet powerful, syntax. These rules contain three parts:
 
