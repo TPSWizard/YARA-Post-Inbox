@@ -5,11 +5,17 @@ YARA rules are text files with a very basic, yet powerful, syntax. These rules c
 
 Each rule in YARA starts with the keyword rule followed by a rule identifier. Identifiers must follow the same lexical conventions of the C programming language, they can contain any alphanumeric character and the underscore character, but the first character cannot be a digit. Rule identifiers are case sensitive and cannot exceed 128 characters. The following keywords are reserved and cannot be used as an identifier:
 
-Meta: Background information regarding rule - Not processed
+Meta:
+^^^^^^^^^^^^^^^^^^^^^^^^
+Background information regarding rule - Not processed
 
-Strings: Pieces of information being searched for in our target email.
+Strings:
+^^^^^^^^^^^^^^^^^^^^^^^^
+Pieces of information being searched for in our target email.
 
-Conditions: Defines the condition for matching. It can be just matching one or several strings. (Are my strings "true?)   
+Conditions:
+^^^^^^^^^^^^^^^^^^^^^^^^
+Defines the condition for matching. It can be just matching one or several strings. (Are my strings "true?)   
     
 
 Writing YARA Rules:
