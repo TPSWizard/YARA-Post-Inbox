@@ -6,7 +6,9 @@ YARA rules are text files with a very basic, yet powerful, syntax. These rules c
 Each rule in YARA starts with the keyword rule followed by a rule identifier. Identifiers must follow the same lexical conventions of the C programming language, they can contain any alphanumeric character and the underscore character, but the first character cannot be a digit. Rule identifiers are case sensitive and cannot exceed 128 characters. The following keywords are reserved and cannot be used as an identifier:
 
 Meta: Background information regarding rule - Not processed
+
 Strings: Pieces of information being searched for in our target email.
+
 Conditions: Defines the condition for matching. It can be just matching one or several strings. (Are my strings "true?)   
     
 
@@ -161,7 +163,7 @@ Sample Rule 3 - At least 2 strings present in email
 
 .. code-block:: yara
 
-   rule CountExample
+   rule multistring
    {
     strings:
         $thing1 = "password"
@@ -187,7 +189,7 @@ Sample Rule 4 - Potentially risky attachments
 
 .. code-block:: yara
 
-   rule CountExample
+   rule riskyattachments
    {
     strings:
         $doc = ".doc" nocase
@@ -218,10 +220,69 @@ Sample Rule 4 - Potentially risky attachments
     
 Sample Rule 5 - Detect any URLs
 ================================    
+.. code-block:: yara
+
+    rule urldetect
+    {
+        strings:
+             $ = "http://"
+             $ = "https://"
+             $ = "www."
+             $ = "file://"
+             $ = "file:///"
+
+            
+        condition:
+            any of them
+            // This is a comment :)
+    }
     
-    
-    
-    
+Sample Rule 6 - General spam keyword list
+================================       
+.. code-block:: yara
+
+    rule spam list
+    {
+        strings:
+            // add as may spam keywords here that you'd like to check for.
+            
+            $ = "Act now" nocase
+            $ = "Apply now" nocase
+            $ = "Become a member" nocase
+            $ = "Call now" nocase
+            $ = "Click below" nocase
+            $ = "Click here" nocase
+            $ = "Get it now" nocase
+            $ = "Do it today" nocase
+            $ = "Don’t delete" nocase
+            $ = "Exclusive deal" nocase
+            $ = "Get started now" nocase
+            $ = "unsubscribe" nocase
+            $ = "report this message" nocase
+            $ = "Order now" nocase
+            
+        condition:
+            any of them
+    }  
+  
+Sample Rule 7 - Targeting specific email headers
+================================       
+.. code-block:: yara
+
+    rule spam list
+    {
+        strings:
+            // add as may spam keywords here that you'd like to check for.
+            
+            $ = "Order now" nocase
+            
+        condition:
+            any of them
+    }   
+  
+
+  
+  
 Working Import Modules
 ================================    
 Section in Progress
