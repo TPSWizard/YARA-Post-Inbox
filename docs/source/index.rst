@@ -246,7 +246,7 @@ Sample Rule 4 - Potentially risky attachments
         any of them
     }    
     
-Sample Rule 5 - Detect any URLs
+Sample Rule 5 - Detect any URLs found in email
 ================================    
 .. code-block:: yara
 
@@ -262,8 +262,7 @@ Sample Rule 5 - Detect any URLs
             
         condition:
             any of them
-            // This is a comment :)
-    }
+     }
     
 Sample Rule 6 - General spam keyword list
 ================================       
@@ -305,16 +304,18 @@ Sample Rule 7 - Targeting specific email headers
             $ = /from:.{0,60}@domain.com/ nocase   // Target "from" email address
             $ = /Return-Path:.{0,60}@domain.com/ nocase  // Target "return-path" email address
 
-            $ = /Received:.{0,20}psm.knowbe4.com/ nocase    // Target "received" email address
+            $ = /Received:.{0,20}some.domain.com/ nocase    // Target "received" email address
             $ = /(\n|\r)Subject:.{0,200}Invoice/ nocase     // Target specific keywords in subject line
             
-            $ = /Authentication-Results:.{0,20}spf=pass/ nocase   // Contains the authentication results of a mail server.
-            $ = /Authentication-Results-Original:.{0,20}spf=pass/ nocase   /* The header field "Authentication-Results-Original" contains the authentication results of a previous mail server. When a mail server authenticates a message, it writes the result to the header field "Authentication-Results". If this field already exists, its contents can be saved in the field "Authentication-Results-Original".
+            $ = /Authentication-Results:.{0,20}spf=pass/ nocase  
+            $ = /Authentication-Results-Original:.{0,20}spf=pass/ nocase   
+            /* The header field "Authentication-Results-Original" contains the authentication results of a previous mail server. When a mail server authenticates a message, it writes the result to the header field "Authentication-Results". If this field already exists, its contents can be saved in the field "Authentication-Results-Original".
             */ 
                      
-            $ = "header.from=domain.com"  // explanation here
+            $ = "header.from=domain.com"  // explanation here & add additional statements
         condition:
             any of them
+             // many variations of conditions may be used
     }   
   
 
