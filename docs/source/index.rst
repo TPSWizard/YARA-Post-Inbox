@@ -81,7 +81,27 @@ keywords are reserved and cannot be used as an identifier:
      -
      -
      -
-     
+ 
+Text strings can also contain the following subset of the escape sequences
+available in the C language:
+
+.. list-table::
+   :widths: 3 10
+
+   * - ``\"``
+     - Double quote
+   * - ``\\``
+     - Backslash
+   * - ``\r``
+     - Carriage return
+   * - ``\t``
+     - Horizontal tab
+   * - ``\n``
+     - New line
+   * - ``\xdd``
+     - Any byte in hexadecimal notation
+
+ 
 Quick Rule Template and Examples/Uses:
 ================================
 
@@ -92,17 +112,21 @@ Quick Rule Template and Examples/Uses:
         meta:
             description = "This is just an example"
             version="0.1"
-            date="2021/05/12"
+            date="2022/03/12"
    
         strings:
             $my_hex_string = {8D 4D B0 2B C1 83 C0 27 99 6A 4E 59 F7 F9}
             $my_text_string = "text here"
-            
+            $text_string1 = "text here" nocase
+            $text_string2 = "text here" wide
+            $text_string3 = "text here" ascii
+                     
         condition:
-            $my_text_string or $my_hex_string
+            $my_text_string and all of ($eml*)
             // This is a comment :)
     }
-
+    
+    
 
      
 Sample Rule 1 | Generic Email Spamming
@@ -110,7 +134,7 @@ Sample Rule 1 | Generic Email Spamming
 
 .. code-block:: yara
 
-   rule CountExample
+   rule generalspam
    {
             meta:
             description = "Generic rule to identify phishing emails"
@@ -155,8 +179,8 @@ Sample Rule 2 - Detecting filesize of attachments (Target attachment)
     rule AttachFileSize
     {
         condition:
-        filesize > 200KB
-    }
+        filesize > 200KB 
+     }
     
 Sample Rule 3 - At least 2 strings present in email
 ================================
@@ -176,12 +200,10 @@ Sample Rule 3 - At least 2 strings present in email
         2 of ($thing1,$thing2,$place1,$place2)
         
         /*
-        
         This can also be written the following ways:
         - 2 of ($thing*,$place*) 
         - 2 of them
-         
-         */
+        */
     } 
     
 Sample Rule 4 - Potentially risky attachments
@@ -241,7 +263,7 @@ Sample Rule 6 - General spam keyword list
 ================================       
 .. code-block:: yara
 
-    rule spam list
+    rule spamlist
     {
         strings:
             // add as may spam keywords here that you'd like to check for.
@@ -269,21 +291,38 @@ Sample Rule 7 - Targeting specific email headers
 ================================       
 .. code-block:: yara
 
-    rule spam list
+    rule targetingheaders
     {
         strings:
-            // add as may spam keywords here that you'd like to check for.
+            // These are different options for targeting headers in YARA - Multiple strings can be used in conjunction
             
-            $ = "Order now" nocase
+            $ = /from:.{0,60}@domain.com/ nocase   // Target "from" email address
+            $ = /Return-Path:.{0,60}@domain.com/ nocase  // Target "return-path" email address
+
+            $ = /Received:.{0,20}psm.knowbe4.com/ nocase    // Target "received" email address
+            $ = /(\n|\r)Subject:.{0,200}Invoice/ nocase     // Target specific keywords in subject line
             
+            $ = /Authentication-Results:.{0,20}spf=pass/ nocase   // Contains the authentication results of a mail server.
+            $ = /Authentication-Results-Original:.{0,20}spf=pass/ nocase   /* The header field "Authentication-Results-Original" contains the authentication results of a previous mail server. When a mail server authenticates a message, it writes the result to the header field "Authentication-Results". If this field already exists, its contents can be saved in the field "Authentication-Results-Original".
+            */ 
+                     
+            $ = "header.from=domain.com"  // explanation here
         condition:
             any of them
     }   
   
 
-  
-  
-Working Import Modules
-================================    
-Section in Progress
 
+
+  
+- IGNORE - Section in Progress - Working Import Modules
+================================    
+
+The following modules are not compiled into YARA by default:
+
+-cuckoo
+
+./configure --enable-cuckoo
+./configure --enable-magic
+./configure --enable-dotnet
+./configure --enable-cuckoo --enable-magic --enable-dotnet
