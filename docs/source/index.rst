@@ -182,7 +182,7 @@ Sample Rule 3 - At least 2 strings present in email
          */
     } 
     
-Sample Rule 4 - At least 2 strings present in email
+Sample Rule 4 - Potentially risky attachments
 ================================
 
 .. code-block:: yara
@@ -190,25 +190,39 @@ Sample Rule 4 - At least 2 strings present in email
    rule CountExample
    {
     strings:
-        $thing1 = "password"
-        $thing2 = "username"
-        
-        $place1 = "Baltimore"
-        $place2 = "Texas"
+        $doc = ".doc" nocase
+        $docx = ".docx" nocase
+        $html = ".html" nocase
+        $exe = ".exe" nocase
+        $pdf = ".pdf" nocase
+        $csv = ".csv" nocase
+        $xlsx = ".xlsx" nocase
+        $htm = ".htm" nocase
+        $pif = ".pif" nocase
+        $msi = ".msi" nocase
+        $jar = ".jar" nocase
+        $jse = ".jse" nocase
+        $ps1 = ".ps1" nocase
+        $js = ".js" nocase
+        $xls = ".xls" nocase
+        $bat = ".bat" nocase
+        $lnk = ".lnk" nocase
+        $dll = ".dll" nocase
+        $bin = ".bin" nocase
+        $sys = ".sys" nocase
+        $com = ".com" nocase
         
     condition:
-        2 of ($thing1,$thing2,$place1,$place2)
-        
-        /*
-        
-        This can also be written the following ways:
-        - 2 of ($thing*,$place*) 
-        - 2 of them
-         
-         */
+        any of them
     }    
+    
+Sample Rule 5 - Detect any URLs
+================================    
+    
+    
     
     
 Working Import Modules
 ================================    
 Section in Progress
+
